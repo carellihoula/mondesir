@@ -1,0 +1,27 @@
+{% extends "films/base.html" %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="row">
+        <div class="col-8 col-md-4 mx-auto">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <legend class="mb-4 pb-2 border-bottom text-center">Ajouter un film!</legend>
+                        {{ form | crispy }}
+                </div>
+
+                <div class="from-group">
+                    <button class="btn btn-outline-info" type="submit">Ajouter</button>
+                </div>
+
+                <div class="border-top mt-3">
+                    <small class="text-muted">
+                        Besoin d'un compte? <a class="ml-2" href="{% url 'user-register' %}">Sign Up</a>
+                    </small>
+                </div>
+
+            </form>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,32 @@
+{%extends 'films/base.html'%}
+
+{%block content%}
+    <div class="row">
+        {% if taille_mylist == 0 %}
+        <div class="col-12">
+                <p class="empty_list mx-auto">
+                    <i class="fas fa-sad-tear"></i>
+                </p>
+            <p class="text-center">
+                you haven't got a favorite movie !<br/>
+                return to the <a href="{%url 'home'%}" >home page</a> to choose one !
+            </p>
+        </div>
+        {%else%}
+
+                {%for film in films%}
+                    <div class="col-12 film-favorite">
+                        <img src="{{film.image.url}}" class="img-fluid mx-auto d-block"/>
+                        <p class="text-center font-weight-bold text-uppercase mt-1 mb-4">
+                            {{film.title}}
+                            <a class="btn btn-danger btn-sm" href="{%url 'remove_favorite' film.id%}">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </p>
+                    </div>
+                {%endfor%}
+
+        {%endif%}
+    </div>
+{%endblock content%}
+
